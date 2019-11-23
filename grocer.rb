@@ -51,12 +51,13 @@ def apply_clearance(cart)
 cart
 end
 
-def checkout(cart, coupons)
-  #this method relies on the other 3 methods above
-  # code here
-  hash_cart = consolidate_cart(array)
-  applied_coupons = apply_coupons(hash_cart, coupons)
-  applied_discount = apply_clearance(applied_coupons)
-  total = applied_discount.reduce(0) { |acc, (key, value)| acc += value[:price] * value[:count]}
-  total > 100 ? total * 0.9 : total
+def checkout(cart, coupons) 
+  total = 0 
+  new_cart = consolidate_cart(cart) 
+  coupon_cart = apply_coupons(new_cart, coupons) 
+  clearance_cart = apply_clearance(coupon_cart) 
+  clearance_cart.each do |item, attribute_hash| 
+    total += (attribute_hash[:price] * attribute_hash[:count])
+  end 
+total = (total * 0.9) if total > 100 total 
 end
