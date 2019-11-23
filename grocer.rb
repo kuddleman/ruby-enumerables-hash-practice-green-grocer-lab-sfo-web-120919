@@ -1,8 +1,6 @@
 require 'pry'
 
 def consolidate_cart(cart)
-  # given an array, translate it into a hash
-  #that includes counts for each item
   final_hash = {}
   cart.each do |element_hash|
     element_name = element_hash.keys[0]
@@ -19,14 +17,12 @@ def consolidate_cart(cart)
     end
   end
   final_hash
+  
 end
-//left off at 47.31
+
 def apply_coupons(cart, coupons)
   # code here
-  coupons.each do |coupon|
-    item = coupon[:item]
-    if car[item] && coupon[:item][:count] >= coupon[:num] && cart["#{item} W/COUPON"]
-  end
+
 end
 
 def apply_clearance(cart)
